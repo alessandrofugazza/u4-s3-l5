@@ -24,16 +24,6 @@ public class Borrow {
     private LocalDate actualReturnDate;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id", nullable = false)
-//    private User user; // <-- Foreign Key
-//
-//    @ManyToMany
-//    @JoinTable(name = "blogs_categories",
-//            joinColumns = @JoinColumn(name = "blog_id"),
-//            inverseJoinColumns = @JoinColumn(name = "category_id"))
-//    private Set<Category> categories;
-
     public Borrow() {
     }
 

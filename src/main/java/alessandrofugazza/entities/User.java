@@ -21,17 +21,6 @@ public class User {
     private LocalDate birthDate;
     private int cardId;
 
-//    @OneToOne(mappedBy = "user") // 1 to 1 diventa così BIDIREZIONALE
-//    private Document document; // Questa non sarà una colonna della tabella
-//    // serve solo lato Java per permetterci di ottenere il documento
-//    // di un certo utente
-//
-//    @OneToMany(mappedBy = "user")
-//    @OrderBy("title ASC")
-//    private List<BlogPost> blogPosts; // Non viene creato a DB, serve
-//    // solo lato Java per permetterci di ottenere la lista di tutti i blog
-//    // scritti da un certo utente
-
     public User() {
     }
 
