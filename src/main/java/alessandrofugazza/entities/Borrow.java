@@ -13,8 +13,11 @@ public class Borrow {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "publication_id", nullable = false)
+//    @OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "publication_id", nullable = false)
     private Publication publication;
     private LocalDate borrowStartDate;
     private LocalDate scheduledReturnDate;

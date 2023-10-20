@@ -6,11 +6,13 @@ import java.util.UUID;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // uso single table perche' ci sono molti campi comuni a book e magazine ma pochi campi diversi
 @Table(name = "publications")
+@NamedQueries({
+        @NamedQuery(name = "deleteByISBN", query = "DELETE FROM Publication p WHERE p.isbn = :isbn"),
+        @NamedQuery(name = "findByPartialTitle", query = "SELECT p FROM Publication p WHERE LOWER(p.title) LIKE LOWER(CONCAT(:title, '%'))")
+})
 @DiscriminatorColumn(name = "publication_type")
 public abstract class Publication {
     @Id
-    @GeneratedValue
-    protected UUID id;
     protected int isbn;
     protected String title;
     protected short publicationYear;
@@ -23,10 +25,6 @@ public abstract class Publication {
         this.title = title;
         this.publicationYear = publicationYear;
         this.numberOfPages = numberOfPages;
-    }
-
-    public UUID getId() {
-        return id;
     }
 
     public int getIsbn() {
