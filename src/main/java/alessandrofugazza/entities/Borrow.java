@@ -1,9 +1,6 @@
 package alessandrofugazza.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -13,11 +10,16 @@ public class Borrow {
     @Id
     @GeneratedValue
     private UUID id;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "publication_id", nullable = false)
     private Publication publication;
     private LocalDate borrowStartDate;
     private LocalDate scheduledReturnDate;
     private LocalDate actualReturnDate;
+
 
 //    @ManyToOne
 //    @JoinColumn(name = "user_id", nullable = false)

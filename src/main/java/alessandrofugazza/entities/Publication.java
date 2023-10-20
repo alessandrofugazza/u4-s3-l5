@@ -1,6 +1,7 @@
 package alessandrofugazza.entities;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // uso single table perche' ci sono molti campi comuni a book e magazine ma pochi campi diversi
@@ -9,17 +10,23 @@ import javax.persistence.*;
 public abstract class Publication {
     @Id
     @GeneratedValue
+    protected UUID id;
     protected int isbn;
     protected String title;
     protected short publicationYear;
     protected short numberOfPages;
 
     public Publication(){}
+
     public Publication(int isbn, String title, short publicationYear, short numberOfPages) {
         this.isbn = isbn;
         this.title = title;
         this.publicationYear = publicationYear;
         this.numberOfPages = numberOfPages;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     public int getIsbn() {
